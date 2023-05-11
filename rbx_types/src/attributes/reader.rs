@@ -27,7 +27,7 @@ pub(crate) fn read_attributes<R: Read>(
         let key_buf = read_string(&mut value).map_err(|_| AttributeError::NoKey)?;
         let key = unsafe {
             String::from_utf8_unchecked(key_buf)
-        }//.map_err(AttributeError::KeyBadUnicode)?;
+        };//.map_err(AttributeError::KeyBadUnicode)?;
 
         let type_id = read_u8(&mut value).map_err(|_| AttributeError::NoValueType)?;
         let ty =
