@@ -32,7 +32,7 @@ fn ignore_unknown_properties() {
     rbx_xml::to_writer(&mut output, &tree, &[tree.get_root_id()], options)
         .expect("Couldn't encode tree");
 
-    let output = String::from_utf8(output).expect("Couldn't convert output to UTF-8");
+    let output = String::from_utf8_lossy(output).expect("Couldn't convert output to UTF-8");
 
     assert!(output.contains("formFactorRaw"));
     assert!(!output.contains("FormFactor"));
@@ -50,7 +50,7 @@ fn write_unknown_properties() {
     rbx_xml::to_writer(&mut output, &tree, &[tree.get_root_id()], options)
         .expect("Couldn't encode tree");
 
-    let output = String::from_utf8(output).expect("Couldn't convert output to UTF-8");
+    let output = String::from_utf8_lossy(output).expect("Couldn't convert output to UTF-8");
 
     assert!(output.contains("formFactorRaw"));
     assert!(!output.contains("FormFactor"));
@@ -79,7 +79,7 @@ fn no_reflection() {
     rbx_xml::to_writer(&mut output, &tree, &[tree.get_root_id()], options)
         .expect("Couldn't encode tree");
 
-    let output = String::from_utf8(output).expect("Couldn't convert output to UTF-8");
+    let output = String::from_utf8_lossy(output).expect("Couldn't convert output to UTF-8");
 
     assert!(!output.contains("formFactorRaw"));
     assert!(output.contains("FormFactor"));
