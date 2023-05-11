@@ -719,7 +719,7 @@ pub enum RobloxString {
 
 impl From<Vec<u8>> for RobloxString {
     fn from(value: Vec<u8>) -> Self {
-        match String::from_utf8_lossy(value) {
+        match String::from_utf8(value) {
             Ok(string) => RobloxString::String(string),
             Err(err) => RobloxString::BinaryString(err.into_bytes()),
         }
