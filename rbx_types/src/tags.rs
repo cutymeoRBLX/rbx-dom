@@ -41,7 +41,7 @@ impl Tags {
         Ok(buf
             .split(|element| *element == 0)
             .filter(|tag_name| !tag_name.is_empty())
-            .map(|tag_name| String::from_utf8(tag_name.to_vec()) )
+            .map(|tag_name| String::from_utf8_lossy(tag_name.to_vec()).to_owned() )
             .collect::<Result<Vec<String>, _>>()?
             .into())
     }
